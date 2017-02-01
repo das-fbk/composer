@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity name="StorageB" xmlns="http://soa.fbk.eu/Entity">
+	<objects>
+		<object type="STB_HeavyAvail" name="HeavyAvail" />
+	</objects>
+	<services>
+		<Service type="STB_HeavyStore"></Service>
+		<Service type="STB_HeavyUnstore"></Service>
+		<Service type="STB_BookStorage"></Service>
+		<!--<Service type="STB_DropStorage"></Service>-->
+	</services>
+	<processes>
+		<process type="StorageAreaB"></process>
+	</processes>
+</entity>

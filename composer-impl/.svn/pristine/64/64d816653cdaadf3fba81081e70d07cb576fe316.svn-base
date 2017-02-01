@@ -1,0 +1,21 @@
+(dn_main.service3 = ST0 & (dn_main.service5 = ST0 & (dn_main.service7 = ST0 & (dn_main.service9 = ST0 & (dn_main.service11 = ST0 & (dn_main.service13 = ST0 & (dn_main.LargeShip_S_ShipAssignment19 = None & (dn_main.LargeShip_S_DeparturePermission21 = No & (dn_main.LargeShip_S_HasGuidance20 = No & (dn_main.LargeShip_S_ShipStatus17 = Full & (dn_main.LargeShip_S_ShipLocation18 = Harbour & (dn_main.LargeShip_S_EcoProcess1 = No & (dn_main.LargeShip_S_EcoBadges1 = Novice & dn_main.FAULT_CONTROLLER = START)))))))))))))
+12
+(dn_main.service3 = ST21 & (dn_main.service5 = ST2 & (dn_main.service7 = ST0 & (dn_main.service9 = ST21 & (dn_main.service11 = ST21 & (dn_main.service13 = ST4 & (dn_main.LargeShip_S_ShipAssignment19 = Gate1 & (dn_main.LargeShip_S_DeparturePermission21 = No & (dn_main.LargeShip_S_HasGuidance20 = Yes & (dn_main.LargeShip_S_ShipStatus17 = Empty & (dn_main.LargeShip_S_ShipLocation18 = Gate1 & (dn_main.LargeShip_S_EcoProcess1 = No & (dn_main.LargeShip_S_EcoBadges1 = GreenHero2 & dn_main.FAULT_CONTROLLER = START)))))))))))))
+digraph plan_fsm {
+ratio="1.3";
+margin="0.2";
+size="8.0,11.4";
+"0" -> "1" [style=dotted label="dn_main.input = service3_LandShip_Request &\n"]
+"1" -> "2" [label="dn_main.output = service3_LandShip_Gate1_Booked"]
+"2" -> "3" [style=dotted label="dn_main.input = service5_G1_LandingGuidance_Request &\n"]
+"3" -> "4" [label="dn_main.output = service5_G1_LandingGuidance_Reply"]
+"4" -> "5" [style=dotted label="dn_main.input = service9_Move2Gate_Request &\n"]
+"5" -> "6" [label="dn_main.output = service9_Move2Gate1_Reply"]
+"6" -> "7" [style=dotted label="dn_main.input = service13_S_AddBadge_Request1 &\n"]
+"7" -> "8" [label="dn_main.output = service13_S_AddBadge_Reply1"]
+"8" -> "9" [style=dotted label="dn_main.input = service11_EmptyShidDifferentiated_Request &\n"]
+"9" -> "10" [label="dn_main.output = service11_EmptyShidDifferentiatedGate1_Reply"]
+"10" -> "11" [style=dotted label="dn_main.input = service13_S_AddBadge_Request2 &\n"]
+"11" -> "12" [label="dn_main.output = service13_S_AddBadge_Reply2"]
+}
+

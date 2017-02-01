@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<process name="MovementManager"
+    xmlns:comp="http://soa.fbk.eu/Composition"
+	xmlns="http://www.example.org/process" 
+	xmlns:ns4="http://soa.fbk.eu/Service"
+	xmlns:ns3="http://www.astroproject.org/wstoolset/Choreography"
+	xmlns:ns5="http://soa.fbk.eu/Object"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/process ../../schemata/process.xsd">
+	
+<sequence>
+	<pick>
+		<onMessage name="Move2StorageA_Request">
+			<sequence>
+				<concrete name="Move2StorageA"/>
+				<invoke name="Move2StorageA_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2StorageB_Request">
+			<sequence>
+				<concrete name="Move2StorageB"/>
+				<invoke name="Move2StorageB_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2StorageC_Request">
+			<sequence>
+				<concrete name="Move2StorageC"/>
+				<invoke name="Move2StorageC_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2StorageD_Request">
+			<sequence>
+				<concrete name="Move2StorageD"/>
+				<invoke name="Move2StorageD_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2StorageE_Request">
+			<sequence>
+				<concrete name="Move2StorageE"/>
+				<invoke name="Move2StorageE_Reply"/>
+			</sequence>
+		</onMessage>
+		
+		<onMessage name="Move2TreatmentA_Request">
+			<sequence>
+				<concrete name="Move2TreatmentA"/>
+				<invoke name="Move2TreatmentA_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2TreatmentB_Request">
+			<sequence>
+				<concrete name="Move2TreatmentB"/>
+				<invoke name="Move2TreatmentB_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2TreatmentC_Request">
+			<sequence>
+				<concrete name="Move2TreatmentC"/>
+				<invoke name="Move2TreatmentC_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2TreatmentD_Request">
+			<sequence>
+				<concrete name="Move2TreatmentD"/>
+				<invoke name="Move2TreatmentD_Reply"/>
+			</sequence>
+		</onMessage>
+		
+		<onMessage name="Move2Consignment_Request">
+			<sequence>
+				<concrete name="Move2Consignment"/>
+				<invoke name="Move2Consignment_Reply"/>
+			</sequence>
+		</onMessage>
+		
+		
+		<onMessage name="Move2DGate1_Request">
+			<sequence>
+				<concrete name="Move2DGate1"/>
+				<invoke name="Move2DGate1_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2DGate2_Request">
+			<sequence>
+				<concrete name="Move2DGate2"/>
+				<invoke name="Move2DGate2_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2DGate3_Request">
+			<sequence>
+				<concrete name="Move2DGate3"/>
+				<invoke name="Move2DGate3_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2DGate4_Request">
+			<sequence>
+				<concrete name="Move2DGate4"/>
+				<invoke name="Move2DGate4_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2DGate5_Request">
+			<sequence>
+				<concrete name="Move2DGate5"/>
+				<invoke name="Move2DGate5_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2DGate6_Request">
+			<sequence>
+				<concrete name="Move2DGate6"/>
+				<invoke name="Move2DGate6_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2DGate7_Request">
+			<sequence>
+				<concrete name="Move2DGate7"/>
+				<invoke name="Move2DGate7_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2DGate8_Request">
+			<sequence>
+				<concrete name="Move2DGate8"/>
+				<invoke name="Move2DGate8_Reply"/>
+			</sequence>
+		</onMessage>
+		<onMessage name="Move2DGate9_Request">
+			<sequence>
+				<concrete name="Move2DGate9"/>
+				<invoke name="Move2DGate9_Reply"/>
+			</sequence>
+		</onMessage>
+	</pick>	
+</sequence>
+</process>

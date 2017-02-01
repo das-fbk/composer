@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<process name="StorageManagerFlow"
+    xmlns:comp="http://soa.fbk.eu/Composition"
+	xmlns="http://www.example.org/process" 
+	xmlns:ns4="http://soa.fbk.eu/Service"
+	xmlns:ns3="http://www.astroproject.org/wstoolset/Choreography"
+	xmlns:ns5="http://soa.fbk.eu/Object"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/process ../../schemata/process.xsd">
+	
+<sequence>
+ 	<receive name="StorageInfo_Request"/>
+ 
+	<concrete name="ProvideStorage" returnsTo="Storage"/>
+	
+	<switch>
+	
+		<if>
+			<varCondition>
+				<name>Storage</name>
+				<value>A</value>
+			</varCondition>
+			<branch>
+				<sequence>
+					<invoke name="AssignedStorageA_Reply"></invoke>
+				</sequence>
+			</branch>
+		</if>
+		
+		<if>
+			<varCondition>
+				<name>Storage</name>
+				<value>B</value>
+			</varCondition>
+			<branch>
+				<sequence>
+					<invoke name="AssignedStorageB_Reply"></invoke>
+				</sequence>
+			</branch>
+		</if>
+		
+		<if>
+			<varCondition>
+				<name>Storage</name>
+				<value>C</value>
+			</varCondition>
+			<branch>
+				<sequence>
+					<invoke name="AssignedStorageC_Reply"></invoke>
+				</sequence>
+			</branch>
+		</if>
+		
+		<if>
+			<varCondition>
+				<name>Storage</name>
+				<value>D</value>
+			</varCondition>
+			<branch>
+				<sequence>
+					<invoke name="AssignedStorageD_Reply"></invoke>
+				</sequence>
+			</branch>
+		</if>
+		
+		<default>
+			<branch>
+				<sequence>
+					<invoke name="AssignedStorageE_Reply"></invoke>
+				</sequence>
+			</branch>
+		</default>
+		
+	</switch>
+	
+</sequence>
+<variable>Storage</variable>
+</process>

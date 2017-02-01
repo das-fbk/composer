@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:object id="C_CarUrgency" xmlns:tns="http://soa.fbk.eu/Object" xmlns:tns1="http://www.astroproject.org/wstoolset/Choreography" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://soa.fbk.eu/Object ../../schemata/Object.xsd ">
+  <tns:states>
+    <tns:state>None</tns:state>
+    <tns:state>Urgent</tns:state>
+    <tns:state>VeryUrgent</tns:state>
+  </tns:states>
+  
+  
+</tns:object>

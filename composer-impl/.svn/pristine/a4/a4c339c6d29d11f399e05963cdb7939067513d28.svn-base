@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity name="LandingManager" xmlns="http://soa.fbk.eu/Entity">
+	<services>
+		<Service type="LM_LandShip" />
+		<Service type="LM_ShipDeparture" />
+	</services>
+	<processes>
+		<process type="LandingManager"/>
+	</processes>
+</entity>

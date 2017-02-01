@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity name="DGate8" xmlns="http://soa.fbk.eu/Entity">
+	<objects>
+		<object type="DG8_Avail" name="Avail" />
+	</objects>
+	<services>
+		<Service type="DG8_LoadCar"></Service>
+		<Service type="DG8_LoadCoveredCar"></Service>
+	</services>
+	<processes>
+		<process type="DGate8"></process>
+	</processes>
+</entity>

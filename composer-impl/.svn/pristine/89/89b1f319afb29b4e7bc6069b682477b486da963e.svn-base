@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:object id="S_ShipStatus" xmlns:tns="http://soa.fbk.eu/Object" xmlns:tns1="http://www.astroproject.org/wstoolset/Choreography" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://soa.fbk.eu/Object ../../schemata/Object.xsd ">
+  
+  <tns:states>
+    <tns:state>Full</tns:state>
+    <tns:state>Empty</tns:state>
+  </tns:states>
+  
+  <!-- new addition -->
+  <tns:events>
+  	<tns:event>Emptied</tns:event>
+  </tns:events>
+  
+  <!-- new addition -->
+  <tns:transitions>
+  	<tns:transition isControllable="true">
+  		<tns:from>Full</tns:from>
+  		<tns:to>Empty</tns:to>
+  		<tns:event>Emptied</tns:event>
+  	</tns:transition>
+  </tns:transitions>
+  
+</tns:object>

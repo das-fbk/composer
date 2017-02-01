@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity name="UnloadingManager" xmlns="http://soa.fbk.eu/Entity">
+	<services>
+		<Service type="UM_MoveToUnpacking" />
+		<Service type="UM_UnloadFromGate1" />
+		<Service type="UM_UnloadFromGate2" />
+		<Service type="UM_UnpackCar" />
+	</services>
+	<processes>
+		<process type="UnloadingManager"/>
+	</processes>
+</entity>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:object id="T_LGateTicket" xmlns:tns="http://soa.fbk.eu/Object" xmlns:tns1="http://www.astroproject.org/wstoolset/Choreography" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://soa.fbk.eu/Object ../../schemata/Object.xsd ">
+  <tns:states>
+    <tns:state>None</tns:state>
+    <tns:state>LGate1</tns:state>
+	<tns:state>LGate2</tns:state>
+	<tns:state>LGate3</tns:state>
+	<tns:state>LGate4</tns:state>
+	<tns:state>LGate5</tns:state>
+	<tns:state>LGate6</tns:state>
+	<tns:state>LGate7</tns:state>
+	<tns:state>LGate8</tns:state>
+	<tns:state>LGate9</tns:state>
+
+  </tns:states>
+  
+  <tns:events>
+  	<tns:event>LGate1_Assigned</tns:event>
+ 	<tns:event>LGate2_Assigned</tns:event>
+ 	<tns:event>LGate3_Assigned</tns:event>
+ 	<tns:event>LGate4_Assigned</tns:event>
+ 	<tns:event>LGate5_Assigned</tns:event>
+ 	<tns:event>LGate6_Assigned</tns:event>
+ 	<tns:event>LGate7_Assigned</tns:event>
+ 	<tns:event>LGate8_Assigned</tns:event>
+ 	<tns:event>LGate9_Assigned</tns:event>
+  	<tns:event>Dropped</tns:event>
+  </tns:events>
+  
+  <tns:transitions>
+  	<tns:transition isControllable="true">
+  		<tns:from>None</tns:from>
+  		<tns:to>LGate1</tns:to>
+  		<tns:event>LGate1_Assigned</tns:event>
+  	</tns:transition>
+  	<tns:transition isControllable="true">
+  		<tns:from>None</tns:from>
+  		<tns:to>LGate2</tns:to>
+  		<tns:event>LGate2_Assigned</tns:event>
+  	</tns:transition>
+  	<tns:transition isControllable="true">
+  		<tns:from>None</tns:from>
+  		<tns:to>LGate3</tns:to>
+  		<tns:event>LGate3_Assigned</tns:event>
+  	</tns:transition>
+  	  	<tns:transition isControllable="true">
+  		<tns:from>None</tns:from>
+  		<tns:to>LGate4</tns:to>
+  		<tns:event>LGate4_Assigned</tns:event>
+  	</tns:transition>
+  	
+  	  	<tns:transition isControllable="true">
+  		<tns:from>None</tns:from>
+  		<tns:to>LGate5</tns:to>
+  		<tns:event>LGate5_Assigned</tns:event>
+  	</tns:transition>
+  	
+  		  	<tns:transition isControllable="true">
+  		<tns:from>None</tns:from>
+  		<tns:to>LGate6</tns:to>
+  		<tns:event>LGate6_Assigned</tns:event>
+  	</tns:transition>
+  	
+  	 <tns:transition isControllable="true">
+  		<tns:from>None</tns:from>
+  		<tns:to>LGate7</tns:to>
+  		<tns:event>LGate7_Assigned</tns:event>
+  	</tns:transition>
+  	  <tns:transition isControllable="true">
+  		<tns:from>None</tns:from>
+  		<tns:to>LGate8</tns:to>
+  		<tns:event>LGate8_Assigned</tns:event>
+  	</tns:transition>
+  	
+  	  <tns:transition isControllable="true">
+  		<tns:from>None</tns:from>
+  		<tns:to>LGate9</tns:to>
+  		<tns:event>LGate9_Assigned</tns:event>
+  	</tns:transition>
+  
+  	
+  	<tns:transition isControllable="true">
+  		<tns:from>LGate1</tns:from>
+  		<tns:to>None</tns:to>
+  		<tns:event>Dropped</tns:event>
+  	</tns:transition>
+  	<tns:transition isControllable="true">
+  		<tns:from>LGate2</tns:from>
+  		<tns:to>None</tns:to>
+  		<tns:event>Dropped</tns:event>
+  	</tns:transition>
+  	<tns:transition isControllable="true">
+  		<tns:from>LGate3</tns:from>
+  		<tns:to>None</tns:to>
+  		<tns:event>Dropped</tns:event>
+  	</tns:transition>
+  	
+  	 <tns:transition isControllable="true">
+  		<tns:from>LGate4</tns:from>
+  		<tns:to>None</tns:to>
+  		<tns:event>Dropped</tns:event>
+  	</tns:transition>
+  	
+  	<tns:transition isControllable="true">
+  		<tns:from>LGate5</tns:from>
+  		<tns:to>None</tns:to>
+  		<tns:event>Dropped</tns:event>
+  	</tns:transition>
+  	
+  	<tns:transition isControllable="true">
+  		<tns:from>LGate6</tns:from>
+  		<tns:to>None</tns:to>
+  		<tns:event>Dropped</tns:event>
+  	</tns:transition>
+  	
+  	<tns:transition isControllable="true">
+  		<tns:from>LGate7</tns:from>
+  		<tns:to>None</tns:to>
+  		<tns:event>Dropped</tns:event>
+  	</tns:transition>
+  	
+  	<tns:transition isControllable="true">
+  		<tns:from>LGate8</tns:from>
+  		<tns:to>None</tns:to>
+  		<tns:event>Dropped</tns:event>
+  	</tns:transition>
+  	
+  	
+  	<tns:transition isControllable="true">
+  		<tns:from>LGate9</tns:from>
+  		<tns:to>None</tns:to>
+  		<tns:event>Dropped</tns:event>
+  	</tns:transition>
+  	
+  </tns:transitions>
+  
+  
+  
+  
+</tns:object>

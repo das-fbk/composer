@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity name="TreatmentA" xmlns="http://soa.fbk.eu/Entity">
+	<services>
+		<Service type="TAE_Treatment"></Service>
+	</services>
+	<processes>
+		<process type="TreatmentA"></process>
+	</processes>
+</entity>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:process name="User_Core" xmlns:tns="http://das.fbk.eu/Process" xmlns:tns1="http://das.fbk.eu/Annotation"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://das.fbk.eu/Process ../Schemata/Process.xsd ">
+ 
+<tns:abstract name="PlanTrip">
+	<tns:goal>
+		<tns1:point>
+			<tns1:domainProperty dp_name="TripPlanner">
+				<tns1:state>
+				TRC
+				</tns1:state>
+			</tns1:domainProperty>
+		</tns1:point>
+	</tns:goal>
+</tns:abstract>
+
+
+</tns:process>

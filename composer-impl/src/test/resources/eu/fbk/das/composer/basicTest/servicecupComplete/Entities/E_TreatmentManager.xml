@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity name="TreatmentManager" xmlns="http://soa.fbk.eu/Entity">
+	<services>
+		<Service type="TM_BookTrEquip"></Service>
+		<Service type="TM_BookTrMech"></Service>
+		<Service type="TM_BookTrWash"></Service>
+		<Service type="TM_BookTrPaint"></Service>
+		<Service type="TM_DropTrEquip"></Service>
+		<Service type="TM_DropTrMech"></Service>
+		<Service type="TM_DropTrWash"></Service>
+		<Service type="TM_DropTrPaint"></Service>
+	</services>
+	<processes>
+		<process type="TreatmentManager"></process>
+	</processes>
+</entity>

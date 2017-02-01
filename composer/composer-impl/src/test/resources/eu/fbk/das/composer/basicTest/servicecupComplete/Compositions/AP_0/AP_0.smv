@@ -1,0 +1,248 @@
+-------------------------------
+--   C O M P O S I T I O N   --
+-------------------------------
+MODULE dn_main
+
+---------------------
+--   I N P U T S   --
+---------------------
+IVAR input:
+{
+UNDEF, service3_LandShip_Request, service3_RESET, service5_G1_LandingGuidance_Request, service5_RESET, service7_RESET, service7_ShipDeparture_Request, service9_Move2Gate_Request, service9_RESET, service11_EmptyShidDifferentiated_Request, service11_RESET, service13_S_AddBadge_Request2, service13_S_AddBadge_Request1, service13_RESET
+};
+
+-----------------------
+--   O U T P U T S   --
+-----------------------
+IVAR output:
+{
+UNDEF, service3_LandShip_Gate1_Booked, service5_G1_LandingGuidance_Reply, service7_ShipDeparture_Reply, service9_Move2Gate1_Reply, service11_EmptyShidDifferentiatedGate1_Reply, service13_S_AddBadge_Reply1, service13_S_AddBadge_Reply2
+};
+
+-------------------------
+--   S E R V I C E S   --
+-------------------------
+--	 service3
+VAR service3: {ST1, ST21, ST0};
+ASSIGN
+next(service3) :=
+case
+(service3 = ST21 & input = service3_RESET): ST0;
+(service3 = ST1 & output = service3_LandShip_Gate1_Booked): ST21;
+(service3 = ST1 & input = service3_RESET): ST0;
+(service3 = ST0 & input = service3_LandShip_Request): ST1;
+1:service3;
+esac;
+TRANS ( input = service3_LandShip_Request) -> (service3 = ST0)
+TRANS ( input = service3_RESET) -> (service3 = ST1 | service3 = ST21)
+TRANS ( output = service3_LandShip_Gate1_Booked) -> (service3 = ST1)
+
+--	 service5
+VAR service5: {ST2, ST1, ST0};
+ASSIGN
+next(service5) :=
+case
+(service5 = ST1 & input = service5_RESET): ST0;
+(service5 = ST0 & input = service5_G1_LandingGuidance_Request): ST1;
+(service5 = ST1 & output = service5_G1_LandingGuidance_Reply): ST2;
+(service5 = ST2 & input = service5_RESET): ST0;
+1:service5;
+esac;
+TRANS ( input = service5_G1_LandingGuidance_Request) -> (service5 = ST0)
+TRANS ( input = service5_RESET) -> (service5 = ST2 | service5 = ST1)
+TRANS ( output = service5_G1_LandingGuidance_Reply) -> (service5 = ST1)
+
+--	 service7
+VAR service7: {ST2, ST1, ST0};
+ASSIGN
+next(service7) :=
+case
+(service7 = ST2 & input = service7_RESET): ST0;
+(service7 = ST1 & input = service7_RESET): ST0;
+(service7 = ST0 & input = service7_ShipDeparture_Request): ST1;
+(service7 = ST1 & output = service7_ShipDeparture_Reply): ST2;
+1:service7;
+esac;
+TRANS ( output = service7_ShipDeparture_Reply) -> (service7 = ST1)
+TRANS ( input = service7_RESET) -> (service7 = ST2 | service7 = ST1)
+TRANS ( input = service7_ShipDeparture_Request) -> (service7 = ST0)
+
+--	 service9
+VAR service9: {ST1, ST21, ST0};
+ASSIGN
+next(service9) :=
+case
+(service9 = ST1 & input = service9_RESET): ST0;
+(service9 = ST1 & output = service9_Move2Gate1_Reply): ST21;
+(service9 = ST21 & input = service9_RESET): ST0;
+(service9 = ST0 & input = service9_Move2Gate_Request): ST1;
+1:service9;
+esac;
+TRANS ( input = service9_Move2Gate_Request) -> (service9 = ST0)
+TRANS ( input = service9_RESET) -> (service9 = ST1 | service9 = ST21)
+TRANS ( output = service9_Move2Gate1_Reply) -> (service9 = ST1)
+
+--	 service11
+VAR service11: {ST1, ST21, ST0};
+ASSIGN
+next(service11) :=
+case
+(service11 = ST0 & input = service11_EmptyShidDifferentiated_Request): ST1;
+(service11 = ST1 & input = service11_RESET): ST0;
+(service11 = ST1 & output = service11_EmptyShidDifferentiatedGate1_Reply): ST21;
+(service11 = ST21 & input = service11_RESET): ST0;
+1:service11;
+esac;
+TRANS ( input = service11_EmptyShidDifferentiated_Request) -> (service11 = ST0)
+TRANS ( output = service11_EmptyShidDifferentiatedGate1_Reply) -> (service11 = ST1)
+TRANS ( input = service11_RESET) -> (service11 = ST1 | service11 = ST21)
+
+--	 service13
+VAR service13: {ST2, ST1, ST4, ST3, ST0};
+ASSIGN
+next(service13) :=
+case
+(service13 = ST3 & input = service13_RESET): ST0;
+(service13 = ST2 & input = service13_S_AddBadge_Request2): ST3;
+(service13 = ST3 & output = service13_S_AddBadge_Reply2): ST4;
+(service13 = ST1 & input = service13_RESET): ST0;
+(service13 = ST0 & input = service13_S_AddBadge_Request1): ST1;
+(service13 = ST4 & input = service13_RESET): ST0;
+(service13 = ST2 & input = service13_RESET): ST0;
+(service13 = ST1 & output = service13_S_AddBadge_Reply1): ST2;
+1:service13;
+esac;
+TRANS ( input = service13_S_AddBadge_Request2) -> (service13 = ST2)
+TRANS ( input = service13_S_AddBadge_Request1) -> (service13 = ST0)
+TRANS ( output = service13_S_AddBadge_Reply1) -> (service13 = ST1)
+TRANS ( output = service13_S_AddBadge_Reply2) -> (service13 = ST3)
+TRANS ( input = service13_RESET) -> (service13 = ST2 | service13 = ST1 | service13 = ST4 | service13 = ST3)
+
+-----------------------
+--   O B J E C T S   --
+-----------------------
+--	 LargeShip_S_ShipAssignment19
+VAR LargeShip_S_ShipAssignment19: {Gate1, None};
+ASSIGN
+next(LargeShip_S_ShipAssignment19) :=
+case
+(LargeShip_S_ShipAssignment19 = None & output = service3_LandShip_Gate1_Booked): Gate1;
+1:LargeShip_S_ShipAssignment19;
+esac;
+--	 LargeShip_S_DeparturePermission21
+VAR LargeShip_S_DeparturePermission21: {No, Yes};
+ASSIGN
+next(LargeShip_S_DeparturePermission21) :=
+case
+(LargeShip_S_DeparturePermission21 = No & output = service7_ShipDeparture_Reply): Yes;
+1:LargeShip_S_DeparturePermission21;
+esac;
+--	 LargeShip_S_HasGuidance20
+VAR LargeShip_S_HasGuidance20: {No, Yes};
+ASSIGN
+next(LargeShip_S_HasGuidance20) :=
+case
+(LargeShip_S_HasGuidance20 = No & output = service5_G1_LandingGuidance_Reply): Yes;
+1:LargeShip_S_HasGuidance20;
+esac;
+--	 LargeShip_S_ShipType16
+VAR LargeShip_S_ShipType16: {Large};
+--	 LargeShip_S_ShipStatus17
+VAR LargeShip_S_ShipStatus17: {Empty, Full};
+ASSIGN
+next(LargeShip_S_ShipStatus17) :=
+case
+(LargeShip_S_ShipStatus17 = Full & output = service11_EmptyShidDifferentiatedGate1_Reply): Empty;
+1:LargeShip_S_ShipStatus17;
+esac;
+--	 LargeShip_S_ShipLocation18
+VAR LargeShip_S_ShipLocation18: {Gate1, Harbour, Gate1En};
+ASSIGN
+next(LargeShip_S_ShipLocation18) :=
+case
+(LargeShip_S_ShipLocation18 = Gate1En & output = service9_Move2Gate1_Reply): Gate1;
+(LargeShip_S_ShipLocation18 = Harbour & output = service3_LandShip_Gate1_Booked): Gate1En;
+1:LargeShip_S_ShipLocation18;
+esac;
+--	 LargeShip_S_EcoProcess1
+VAR LargeShip_S_EcoProcess1: {No, Yes};
+ASSIGN
+next(LargeShip_S_EcoProcess1) :=
+case
+(LargeShip_S_EcoProcess1 = Yes & output = service13_S_AddBadge_Reply1): No;
+(LargeShip_S_EcoProcess1 = Yes & output = service13_S_AddBadge_Reply2): No;
+(LargeShip_S_EcoProcess1 = No & output = service9_Move2Gate1_Reply): Yes;
+(LargeShip_S_EcoProcess1 = No & output = service11_EmptyShidDifferentiatedGate1_Reply): Yes;
+1:LargeShip_S_EcoProcess1;
+esac;
+--	 LargeShip_S_EcoBadges1
+VAR LargeShip_S_EcoBadges1: {GreenHero2, Novice, GreenHero1};
+ASSIGN
+next(LargeShip_S_EcoBadges1) :=
+case
+(LargeShip_S_EcoBadges1 = Novice & output = service13_S_AddBadge_Reply1): GreenHero1;
+(LargeShip_S_EcoBadges1 = GreenHero1 & output = service13_S_AddBadge_Reply2): GreenHero2;
+1:LargeShip_S_EcoBadges1;
+esac;
+-----------------------------------
+--   P R E C O N D I T I O N S   --
+-----------------------------------
+TRANS (input = service3_LandShip_Request) -> ((((LargeShip_S_ShipLocation18 = Harbour))))
+TRANS (input = service5_G1_LandingGuidance_Request) -> ((((LargeShip_S_ShipAssignment19 = Gate1)) & ((LargeShip_S_ShipLocation18 = Gate1En)) & ((LargeShip_S_HasGuidance20 = No))))
+TRANS (input = service7_ShipDeparture_Request) -> ((((LargeShip_S_ShipLocation18 = Gate1)) & ((LargeShip_S_ShipStatus17 = Empty))))
+TRANS (input = service9_Move2Gate_Request) -> ((((LargeShip_S_ShipLocation18 = Gate1En)) & ((LargeShip_S_HasGuidance20 = Yes))))
+TRANS (output = service9_Move2Gate1_Reply) -> ((((LargeShip_S_ShipLocation18 = Gate1En))))
+TRANS (input = service11_EmptyShidDifferentiated_Request) -> ((((LargeShip_S_ShipLocation18 = Gate1))))
+TRANS (output = service11_EmptyShidDifferentiatedGate1_Reply) -> ((((LargeShip_S_ShipLocation18 = Gate1))))
+TRANS (input = service13_S_AddBadge_Request1) -> ((((LargeShip_S_EcoProcess1 = Yes))))
+TRANS (input = service13_S_AddBadge_Request2) -> ((((LargeShip_S_EcoProcess1 = Yes)) & ((LargeShip_S_EcoBadges1 = GreenHero1))))
+-----------------------------
+--   I N V A R I A N T S   --
+-----------------------------
+--	 Synchronicity
+TRANS (1-(input = UNDEF)) + (1-(output = UNDEF)) = 1
+
+---------------------------------------
+--   S Y N C H R O N I Z A T I O N   --
+---------------------------------------
+DEFINE SYNC0 := ((LargeShip_S_EcoBadges1 in {GreenHero2}));
+--	 Synchronicity enforcement
+TRANS (service3 in {ST1}) -> (next(service3) != service3)
+TRANS (service5 in {ST1}) -> (next(service5) != service5)
+TRANS (service7 in {ST1}) -> (next(service7) != service7)
+TRANS (service9 in {ST1}) -> (next(service9) != service9)
+TRANS (service11 in {ST1}) -> (next(service11) != service11)
+TRANS (service13 in {ST1, ST3}) -> (next(service13) != service13)
+-------------------------------
+--   C O N T R O L L E R S   --
+-------------------------------
+--	 Fault Controller
+VAR FAULT_CONTROLLER: { START, STOP };
+INIT FAULT_CONTROLLER = START
+
+ASSIGN
+next(FAULT_CONTROLLER) := 
+case
+(FAULT_CONTROLLER = START & FALSE): STOP;
+1: FAULT_CONTROLLER;
+esac;
+
+TRANS (output != UNDEF | input != UNDEF) -> (FAULT_CONTROLLER != STOP)
+
+-------------------------------------
+--   I N I T I A L I Z A T I O N   --
+-------------------------------------
+INIT ((LargeShip_S_ShipAssignment19 = None) & (LargeShip_S_DeparturePermission21 = No) & (LargeShip_S_HasGuidance20 = No) & (LargeShip_S_ShipType16 = Large) & (LargeShip_S_ShipStatus17 = Full) & (LargeShip_S_ShipLocation18 = Harbour) & (LargeShip_S_EcoProcess1 = No) & (LargeShip_S_EcoBadges1 = Novice))
+INIT ((service3 = ST0) & (service5 = ST0) & (service7 = ST0) & (service9 = ST0) & (service11 = ST0) & (service13 = ST0))
+
+-----------------
+--   G O A L   --
+-----------------
+MODULE main
+VAR dn_main : dn_main;
+
+GOAL ONEOF(
+(dn_main.SYNC0), 1;
+(dn_main.FAULT_CONTROLLER = STOP), 0
+
+)

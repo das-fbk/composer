@@ -1,0 +1,17 @@
+=FBK DAS Unit Composer=
+
+To install, just run:
+
+mvn clean install
+
+see target for compile result
+
+
+==Mac configuration==
+
+In order to run composer component inside Allow Ensembles demonstrator, on system must be configured wine (1.6.2), because runs 
+a small executable included inside demonstrator, wsynth.
+Please see composer-impl.jar dependency and modifiy configuration.properties inside with following properties (example values)
+
+macWinePath=/opt/local/bin/wine
+macwsynthPath=/opt/local/bin/wsynth.exe

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity name="ship" xmlns="http://soa.fbk.eu/Entity">
+	<objects>
+		<object type="S_ShipType" name="ShipType" />
+		<object type="S_ShipStatus" name="ShipStatus" />
+		<object type="S_ShipLocation" name="ShipLocation" />
+		<object type="S_ShipAssignment" name="ShipAssignment" />
+		<object type="S_HasGuidance" name="HasGuidance" />
+		<object type="S_DeparturePermission" name="DeparturePermission" />
+		<!-- new addition -->
+		<object type="S_EcoProcess" name="EcoProcess" />
+		<object type="S_EcoBadges" name="EcoBadges" />
+	</objects>
+	<processes>
+		<process type="Ship" ></process>
+	</processes>
+</entity>

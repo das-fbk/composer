@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity name="DGate5" xmlns="http://soa.fbk.eu/Entity">
+	<objects>
+		<object type="DG5_Avail" name="Avail" />
+	</objects>
+	<services>
+		<Service type="DG5_LoadCar"></Service>
+	</services>
+	<processes>
+		<process type="DGate5"></process>
+	</processes>
+</entity>

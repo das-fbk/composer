@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tns="http://das.fbk.eu/Scenario">
+	<tns:domainObject file="domainObjects/JourneyPlanner.apfl">
+	</tns:domainObject>
+	<tns:domainObject file="domainObjects/User.apfl">
+		<tns:domainObjectInstance id="First_User">
+			<!-- Scommentare per cambiare la knowledge iniziale del processo -->
+			<!-- 
+			<tns:domainObjectInstanceKnowledge>
+				<tns:dp name="TripPlanner" currentState="ORGANIZED" />
+			</tns:domainObjectInstanceKnowledge>
+			-->
+			<!-- Da scommentare per far partire il processo da un'attività che non 
+				sia la prima -->
+			<!-- 
+			<tns:process curentActivity="AbstractRequestCompleted" />
+			 -->
+		</tns:domainObjectInstance>
+	</tns:domainObject>
+	<!-- Scommentare per far partire il secondo domain Object -->
+	<!-- <tns:domainObject file="domainObjects/User.apfl"> <tns:domainObjectInstance 
+		id="Second_User"> </tns:domainObjectInstance> </tns:domainObject> -->
+</tns:scenario>

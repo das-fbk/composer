@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:domainObject name="FlexibusCompany" xmlns:tns="http://das.fbk.eu/DomainObject" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://das.fbk.eu/DomainObject ../../../schema/allow-ensembles/DomainObject.xsd ">
+  
+  <tns:domainKnowledge>
+    <tns:internalDomainProperty name="domainProperties/FlexibusTrip_dp"/>
+  </tns:domainKnowledge>
+    
+  <tns:process name="processes/FlexibusCompany_process"/>
+  
+  <tns:fragment name="fragments/FC_userRegistration"/>
+  <tns:fragment name="fragments/FC_flexibusBooking"/>
+  
+</tns:domainObject>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:object id="C_StorageInfo" xmlns:tns="http://soa.fbk.eu/Object" xmlns:tns1="http://www.astroproject.org/wstoolset/Choreography" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://soa.fbk.eu/Object ../../schemata/Object.xsd ">
+  <tns:states>
+    <tns:state>None</tns:state>
+    <tns:state>StorageA</tns:state>
+    <tns:state>StorageB</tns:state>
+    <tns:state>StorageC</tns:state>
+    <tns:state>StorageD</tns:state>
+    <tns:state>StorageE</tns:state>
+  </tns:states>
+  
+  <tns:events>
+  	<tns:event>StorageA_Suggested</tns:event>
+  	<tns:event>StorageB_Suggested</tns:event>
+  	<tns:event>StorageC_Suggested</tns:event>
+  	<tns:event>StorageD_Suggested</tns:event>
+  	<tns:event>StorageE_Suggested</tns:event>
+  	<tns:event>Expired</tns:event>
+  </tns:events>
+  
+  <tns:transitions>
+  	<tns:transition isControllable="true">
+  		<tns:from>None</tns:from>
+  		<tns:to>StorageA</tns:to>
+  		<tns:event>StorageA_Suggested</tns:event>
+  	</tns:transition>
+  	<tns:transition isControllable="true">
+  		<tns:from>None</tns:from>
+  		<tns:to>StorageB</tns:to>
+  		<tns:event>StorageB_Suggested</tns:event>
+  	</tns:transition>
+  	<tns:transition isControllable="true">
+  		<tns:from>None</tns:from>
+  		<tns:to>StorageC</tns:to>
+  		<tns:event>StorageC_Suggested</tns:event>
+  	</tns:transition>
+  	<tns:transition isControllable="true">
+  		<tns:from>None</tns:from>
+  		<tns:to>StorageD</tns:to>
+  		<tns:event>StorageD_Suggested</tns:event>
+  	</tns:transition>
+  	<tns:transition isControllable="true">
+  		<tns:from>None</tns:from>
+  		<tns:to>StorageE</tns:to>
+  		<tns:event>StorageE_Suggested</tns:event>
+  	</tns:transition>
+  	
+  	
+  	
+  	
+  	<tns:transition isControllable="true">
+  		<tns:from>StorageE</tns:from>
+  		<tns:to>None</tns:to>
+  		<tns:event>Expired</tns:event>
+  	</tns:transition>
+  	<tns:transition isControllable="true">
+  		<tns:from>StorageD</tns:from>
+  		<tns:to>None</tns:to>
+  		<tns:event>Expired</tns:event>
+  	</tns:transition>
+  	<tns:transition isControllable="true">
+  		<tns:from>StorageC</tns:from>
+  		<tns:to>None</tns:to>
+  		<tns:event>Expired</tns:event>
+  	</tns:transition>
+  	<tns:transition isControllable="true">
+  		<tns:from>StorageB</tns:from>
+  		<tns:to>None</tns:to>
+  		<tns:event>Expired</tns:event>
+  	</tns:transition>
+  	<tns:transition isControllable="true">
+  		<tns:from>StorageA</tns:from>
+  		<tns:to>None</tns:to>
+  		<tns:event>Expired</tns:event>
+  	</tns:transition>
+  </tns:transitions>
+  
+  
+</tns:object>

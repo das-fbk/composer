@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity name="StorageD" xmlns="http://soa.fbk.eu/Entity">
+	<objects>
+		<object type="STD_LuxAvail" name="NormAvail" />
+	</objects>
+	<services>
+		<Service type="STD_LuxStore"></Service>
+		<Service type="STD_LuxUnstore"></Service>
+		<Service type="STD_BookStorage"></Service>
+		<!--<Service type="STD_DropStorage"></Service>-->
+	</services>
+	<processes>
+		<process type="StorageAreaD"></process>
+	</processes>
+</entity>

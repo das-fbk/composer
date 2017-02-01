@@ -1,0 +1,147 @@
+-------------------------------
+--   C O M P O S I T I O N   --
+-------------------------------
+MODULE dn_main
+
+---------------------
+--   I N P U T S   --
+---------------------
+IVAR input:
+{
+UNDEF, TO_organizeTrip_FlexibusTrip, TO_organizeTrip_RESET, TO_organizeTrip_TripOrganizerA, FC_userRegistration_FlexibusTrip, FC_userRegistration_RESET, FC_flexibusBooking_FlexibusTrip, FC_flexibusBooking_RESET
+};
+
+-----------------------
+--   O U T P U T S   --
+-----------------------
+IVAR output:
+{
+UNDEF, TO_organizeTrip_ReceiveGoal, FC_userRegistration_FlexibusTripB, FC_flexibusBooking_FlexibusTripA
+};
+
+-------------------------
+--   S E R V I C E S   --
+-------------------------
+--	 TO_organizeTrip
+VAR TO_organizeTrip: {ST2, ST1, ST3, ST0};
+ASSIGN
+next(TO_organizeTrip) :=
+case
+(TO_organizeTrip = ST1 & input = TO_organizeTrip_RESET): ST0;
+(TO_organizeTrip = ST1 & output = TO_organizeTrip_ReceiveGoal): ST2;
+(TO_organizeTrip = ST3 & input = TO_organizeTrip_RESET): ST0;
+(TO_organizeTrip = ST2 & input = TO_organizeTrip_FlexibusTrip): ST3;
+(TO_organizeTrip = ST2 & input = TO_organizeTrip_RESET): ST0;
+(TO_organizeTrip = ST0 & input = TO_organizeTrip_TripOrganizerA): ST1;
+1:TO_organizeTrip;
+esac;
+TRANS ( output = TO_organizeTrip_ReceiveGoal) -> (TO_organizeTrip = ST1)
+TRANS ( input = TO_organizeTrip_FlexibusTrip) -> (TO_organizeTrip = ST2)
+TRANS ( input = TO_organizeTrip_RESET) -> (TO_organizeTrip = ST2 | TO_organizeTrip = ST1 | TO_organizeTrip = ST3)
+TRANS ( input = TO_organizeTrip_TripOrganizerA) -> (TO_organizeTrip = ST0)
+
+--	 FC_userRegistration
+VAR FC_userRegistration: {ST2, ST1, ST0};
+ASSIGN
+next(FC_userRegistration) :=
+case
+(FC_userRegistration = ST2 & input = FC_userRegistration_RESET): ST0;
+(FC_userRegistration = ST0 & input = FC_userRegistration_FlexibusTrip): ST1;
+(FC_userRegistration = ST1 & output = FC_userRegistration_FlexibusTripB): ST2;
+(FC_userRegistration = ST1 & input = FC_userRegistration_RESET): ST0;
+1:FC_userRegistration;
+esac;
+TRANS ( output = FC_userRegistration_FlexibusTripB) -> (FC_userRegistration = ST1)
+TRANS ( input = FC_userRegistration_FlexibusTrip) -> (FC_userRegistration = ST0)
+TRANS ( input = FC_userRegistration_RESET) -> (FC_userRegistration = ST2 | FC_userRegistration = ST1)
+
+--	 FC_flexibusBooking
+VAR FC_flexibusBooking: {ST2, ST1, ST0};
+ASSIGN
+next(FC_flexibusBooking) :=
+case
+(FC_flexibusBooking = ST2 & input = FC_flexibusBooking_RESET): ST0;
+(FC_flexibusBooking = ST0 & input = FC_flexibusBooking_FlexibusTrip): ST1;
+(FC_flexibusBooking = ST1 & output = FC_flexibusBooking_FlexibusTripA): ST2;
+(FC_flexibusBooking = ST1 & input = FC_flexibusBooking_RESET): ST0;
+1:FC_flexibusBooking;
+esac;
+TRANS ( output = FC_flexibusBooking_FlexibusTripA) -> (FC_flexibusBooking = ST1)
+TRANS ( input = FC_flexibusBooking_FlexibusTrip) -> (FC_flexibusBooking = ST0)
+TRANS ( input = FC_flexibusBooking_RESET) -> (FC_flexibusBooking = ST2 | FC_flexibusBooking = ST1)
+
+-----------------------
+--   O B J E C T S   --
+-----------------------
+--	 TripOrganizer
+VAR TripOrganizer: {ORGANIZED, RINIT};
+ASSIGN
+next(TripOrganizer) :=
+case
+(input = TO_organizeTrip_FlexibusTrip):{(ORGANIZED)};
+1:TripOrganizer;
+esac;
+--	 FlexibusTrip
+VAR FlexibusTrip: {TRIP_BOOKED, RINIT, TRIP_REQUESTED, USER_REGISTERED};
+ASSIGN
+next(FlexibusTrip) :=
+case
+(FlexibusTrip = RINIT & output = FC_userRegistration_FlexibusTripB): USER_REGISTERED;
+(FlexibusTrip = TRIP_REQUESTED & output = FC_flexibusBooking_FlexibusTripA): TRIP_BOOKED;
+(FlexibusTrip = USER_REGISTERED & input = FC_flexibusBooking_FlexibusTrip): TRIP_REQUESTED;
+(input = TO_organizeTrip_FlexibusTrip):{(TRIP_BOOKED)};
+1:FlexibusTrip;
+esac;
+-----------------------------------
+--   P R E C O N D I T I O N S   --
+-----------------------------------
+TRANS (input = TO_organizeTrip_TripOrganizerA) -> ((((TripOrganizer = RINIT))))
+TRANS (input = FC_userRegistration_FlexibusTrip) -> ((((FlexibusTrip = RINIT))))
+TRANS (input = FC_flexibusBooking_FlexibusTrip) -> ((((FlexibusTrip = USER_REGISTERED))))
+-----------------------------
+--   I N V A R I A N T S   --
+-----------------------------
+--	 Synchronicity
+TRANS (1-(input = UNDEF)) + (1-(output = UNDEF)) = 1
+
+---------------------------------------
+--   S Y N C H R O N I Z A T I O N   --
+---------------------------------------
+DEFINE SYNC0 := ((TripOrganizer in {ORGANIZED}));
+--	 Synchronicity enforcement
+TRANS (TO_organizeTrip in {ST1}) -> (next(TO_organizeTrip) != TO_organizeTrip)
+TRANS (FC_userRegistration in {ST1}) -> (next(FC_userRegistration) != FC_userRegistration)
+TRANS (FC_flexibusBooking in {ST1}) -> (next(FC_flexibusBooking) != FC_flexibusBooking)
+-------------------------------
+--   C O N T R O L L E R S   --
+-------------------------------
+--	 Fault Controller
+VAR FAULT_CONTROLLER: { START, STOP };
+INIT FAULT_CONTROLLER = START
+
+ASSIGN
+next(FAULT_CONTROLLER) := 
+case
+(FAULT_CONTROLLER = START & FALSE): STOP;
+1: FAULT_CONTROLLER;
+esac;
+
+TRANS (output != UNDEF | input != UNDEF) -> (FAULT_CONTROLLER != STOP)
+
+-------------------------------------
+--   I N I T I A L I Z A T I O N   --
+-------------------------------------
+INIT ((TripOrganizer = RINIT) & (FlexibusTrip = RINIT))
+INIT ((TO_organizeTrip = ST0) & (FC_userRegistration = ST0) & (FC_flexibusBooking = ST0))
+
+-----------------
+--   G O A L   --
+-----------------
+MODULE main
+VAR dn_main : dn_main;
+
+GOAL ONEOF(
+(dn_main.SYNC0), 1;
+(dn_main.FAULT_CONTROLLER = STOP), 0
+
+)

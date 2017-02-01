@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<process name="ShipFlow" 
+    xmlns:comp="http://soa.fbk.eu/Service"
+	xmlns="http://www.example.org/process" xmlns:ns4="http://soa.fbk.eu/Service"
+	xmlns:ns3="http://www.astroproject.org/wstoolset/Choreography"
+	xmlns:ns5="http://soa.fbk.eu/Object">
+
+<sequence>
+ <abstract name="Landing">
+ <goal>
+	<comp:point>
+  		<comp:object o_name="S_ShipAssignment">
+  			<comp:state>Gate1</comp:state>
+ 			<comp:state>Gate2</comp:state>
+  		</comp:object>
+  	</comp:point>		
+ </goal>
+ </abstract>  
+ 
+ <concrete name="MoveToAssignedEntrance"></concrete> 
+  
+ <abstract name="Guidance">
+  <goal>
+  <comp:point>
+  	<comp:object o_name="S_HasGuidance">
+  		<comp:state>Yes</comp:state>
+  	</comp:object>
+  </comp:point>		
+  </goal>
+ </abstract>  
+  
+ 
+ <concrete name="LandToAssignedGate"></concrete> 
+ <concrete name="WaitUnloading"></concrete> 
+  
+ <abstract name="Departure">
+  <goal>
+  <comp:point>
+  	<comp:object o_name="S_DeparturePermission">
+  		<comp:state>Yes</comp:state>
+  	</comp:object>
+  </comp:point>		
+  </goal>
+ </abstract>  
+ 
+ <concrete name="LeaveGate"></concrete> 
+
+</sequence>
+</process>

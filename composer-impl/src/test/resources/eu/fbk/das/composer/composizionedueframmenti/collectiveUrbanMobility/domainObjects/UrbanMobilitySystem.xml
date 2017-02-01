@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:domainObject name="UrbanMobilitySystem" xmlns:tns="http://das.fbk.eu/DomainObject" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://das.fbk.eu/Fragment ../../../schema/allow-ensembles/DomainObject.xsd ">
+  
+  <tns:domainKnowledge>
+
+      <tns:externalDomainProperty name="domainProperties/TripPlanner_dp" />
+      <tns:externalDomainProperty name="domainProperties/TripOrganizer" />
+
+  </tns:domainKnowledge>
+  <tns:process name="processes/User_process"/>
+ 
+</tns:domainObject>

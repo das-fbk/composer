@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity name="TreatmentC" xmlns="http://soa.fbk.eu/Entity">
+	<services>
+		<Service type="TAP_Treatment"></Service>
+	</services>
+	<processes>
+		<process type="TreatmentC"></process>
+	</processes>
+</entity>

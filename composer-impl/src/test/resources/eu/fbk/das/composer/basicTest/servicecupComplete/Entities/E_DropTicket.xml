@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity name="DropTicket" xmlns="http://soa.fbk.eu/Entity">
+	<services>
+		<Service type="DE_DropTicketA"></Service>
+		<Service type="DE_DropTicketB"></Service>
+		<Service type="DE_DropTicketC"></Service>
+		<Service type="DE_DropTicketD"></Service>
+		<Service type="DE_DropTicketE"></Service>
+	</services>
+	<processes>
+		<process type="DropTicket"></process>
+	</processes>
+</entity>

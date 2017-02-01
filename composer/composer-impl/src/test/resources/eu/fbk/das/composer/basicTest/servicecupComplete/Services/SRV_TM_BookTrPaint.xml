@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:service id="TM_BookTrPaint" xmlns:tns="http://soa.fbk.eu/Service" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://soa.fbk.eu/Service ../../schemata/Service.xsd ">
+  <tns:states>
+    <tns:state isInitial="true">ST0</tns:state>
+    <tns:state>ST1</tns:state>
+    <tns:state>ST2</tns:state>
+<!--     <tns:state>ST3</tns:state> -->
+<!--     <tns:state>ST4</tns:state> -->
+<!--     <tns:state>ST5</tns:state> -->
+  </tns:states>
+  <tns:actions>
+    <tns:input>BookTrPaint_Request</tns:input>
+    <tns:output>BookedTrPaint_Reply</tns:output>
+<!--     <tns:output>BusyTrPaint_Reply</tns:output> -->
+<!--     <tns:input>WaitTrPaint_Request</tns:input> -->
+<!--     <tns:output>BookedWaitTrPaint_Reply</tns:output> -->
+  </tns:actions>
+  <tns:transitions>
+    <tns:transition>
+      <tns:initialState>ST0</tns:initialState>
+      <tns:finalState>ST1</tns:finalState>
+      <tns:input>BookTrPaint_Request</tns:input>
+    </tns:transition>
+    <tns:transition>
+      <tns:initialState>ST1</tns:initialState>
+      <tns:finalState>ST2</tns:finalState>
+      <tns:output>BookedTrPaint_Reply</tns:output>
+    </tns:transition> 
+<!--     <tns:transition> -->
+<!--       <tns:initialState>ST1</tns:initialState> -->
+<!--       <tns:finalState>ST3</tns:finalState> -->
+<!--       <tns:output>BusyTrPaint_Reply</tns:output> -->
+<!--     </tns:transition>   -->
+    
+<!--     <tns:transition> -->
+<!--       <tns:initialState>ST3</tns:initialState> -->
+<!--       <tns:finalState>ST4</tns:finalState> -->
+<!--       <tns:input>WaitTrPaint_Request</tns:input> -->
+<!--     </tns:transition> -->
+<!--     <tns:transition> -->
+<!--       <tns:initialState>ST4</tns:initialState> -->
+<!--       <tns:finalState>ST5</tns:finalState> -->
+<!--       <tns:input>BookedWaitTrPaint_Reply</tns:input> -->
+<!--     </tns:transition> -->
+  </tns:transitions>
+  
+  <tns:consumerEntityType>Car</tns:consumerEntityType>
+  
+  <tns:annotation>
+  	<tns:objects >
+  		<tns:object o_name="Ticket" type="C_PaintTicket"/>
+<!--   		<tns:object o_name="Location" type="C_CarLocation"/> -->
+  	</tns:objects>
+  	
+  	<tns:preconditions>
+  		<tns:precondition action="BookTrPaint_Request">
+  			<tns:point>
+  				<tns:object o_name="Ticket">
+  					<tns:state>No</tns:state>
+  				</tns:object>
+  			</tns:point>
+  		</tns:precondition>
+<!--   		<tns:precondition action="WaitTrPaint_Request"> -->
+<!--   			<tns:point> -->
+<!--   				<tns:object o_name="Location"> -->
+<!--   					<tns:state>StorageAIn</tns:state> -->
+<!--   					<tns:state>StorageBIn</tns:state> -->
+<!--   					<tns:state>StorageCIn</tns:state> -->
+<!--   					<tns:state>StorageDIn</tns:state> -->
+<!--   					<tns:state>StorageEIn</tns:state> -->
+<!--   				</tns:object> -->
+<!--   				<tns:object o_name="Ticket"> -->
+<!--   					<tns:state>No</tns:state> -->
+<!--   				</tns:object> -->
+<!--   			</tns:point> -->
+<!--   		</tns:precondition> -->
+  	</tns:preconditions>
+  	
+  	
+  	<tns:effects>
+  		<tns:effect action="BookedTrPaint_Reply">
+  			<tns:object o_name="Ticket">
+  				<tns:event>Treatment_Booked</tns:event>
+  			</tns:object> 		
+  		</tns:effect>
+  		
+<!--   		<tns:effect action="BookedWaitTrPaint_Reply"> -->
+<!--   			<tns:object o_name="Ticket"> -->
+<!--   				<tns:event>Treatment_Booked</tns:event> -->
+<!--   			</tns:object> 		 -->
+<!--   		</tns:effect> -->
+  
+  	</tns:effects>
+  	
+  </tns:annotation>
+</tns:service>

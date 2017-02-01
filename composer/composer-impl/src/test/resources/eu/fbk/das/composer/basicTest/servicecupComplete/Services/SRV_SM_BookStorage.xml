@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:service id="SM_BookStorage" xmlns:tns="http://soa.fbk.eu/Service" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://soa.fbk.eu/Service ../../schemata/Service.xsd ">
+  <tns:states>
+    <tns:state isInitial="true">ST0</tns:state>
+    <tns:state>ST1</tns:state>
+    <tns:state>ST2</tns:state>
+    <tns:state>ST3</tns:state>
+    <tns:state>ST4</tns:state>
+    <tns:state>ST5</tns:state>
+    <tns:state>ST6</tns:state>
+  </tns:states>
+  <tns:actions>
+    <tns:input>BookStorage_Request</tns:input>
+    <tns:output>BookedStorageA_Reply</tns:output>
+    <tns:output>BookedStorageB_Reply</tns:output>
+    <tns:output>BookedStorageC_Reply</tns:output>
+    <tns:output>BookedStorageD_Reply</tns:output>
+    <tns:output>BookedStorageE_Reply</tns:output>
+  </tns:actions>
+  <tns:transitions>
+    <tns:transition>
+      <tns:initialState>ST0</tns:initialState>
+      <tns:finalState>ST1</tns:finalState>
+      <tns:input>BookStorage_Request</tns:input>
+    </tns:transition>
+    <tns:transition>
+      <tns:initialState>ST1</tns:initialState>
+      <tns:finalState>ST2</tns:finalState>
+      <tns:output>BookedStorageA_Reply</tns:output>
+    </tns:transition>  
+    <tns:transition>
+      <tns:initialState>ST1</tns:initialState>
+      <tns:finalState>ST3</tns:finalState>
+      <tns:output>BookedStorageB_Reply</tns:output>
+    </tns:transition>
+    <tns:transition>
+      <tns:initialState>ST1</tns:initialState>
+      <tns:finalState>ST4</tns:finalState>
+      <tns:output>BookedStorageC_Reply</tns:output>
+    </tns:transition>
+    <tns:transition>
+      <tns:initialState>ST1</tns:initialState>
+      <tns:finalState>ST5</tns:finalState>
+      <tns:output>BookedStorageD_Reply</tns:output>
+    </tns:transition>
+    <tns:transition>
+      <tns:initialState>ST1</tns:initialState>
+      <tns:finalState>ST6</tns:finalState>
+      <tns:output>BookedStorageE_Reply</tns:output>
+    </tns:transition>
+  </tns:transitions>
+  
+  <tns:consumerEntityType>Car</tns:consumerEntityType>
+  
+  <tns:annotation>
+  	<tns:objects >
+  		<tns:object o_name="Ticket" type="C_StorageTicket"/>
+  		<tns:object o_name="TicketA" type="C_StorageTicketA"/>
+  		<tns:object o_name="TicketB" type="C_StorageTicketB"/>
+  		<tns:object o_name="TicketC" type="C_StorageTicketC"/>
+  		<tns:object o_name="TicketD" type="C_StorageTicketD"/>
+  		<tns:object o_name="TicketE" type="C_StorageTicketE"/>
+  		<tns:object o_name="Type" type="C_CarType"/>
+  		<tns:object o_name="AvailA" type="STA_NormAvail"/>
+  		<tns:object o_name="AvailC" type="STC_NormAvail"/>
+  		<tns:object o_name="AvailB" type="STB_HeavyAvail"/>
+  		<tns:object o_name="AvailE" type="STE_HeavyAvail"/>
+  		<tns:object o_name="AvailD" type="STD_LuxAvail"/>
+  		<tns:object o_name="Info" type="C_StorageInfo"/>
+  	</tns:objects>
+  	
+  	<tns:preconditions>
+  		<tns:precondition action="BookedStorageA_Reply">
+  			<tns:point>
+  				<tns:object o_name="Type">
+  					<tns:state>Normal</tns:state>
+  				</tns:object>
+  				<tns:object o_name="AvailA">
+  					<tns:state>Yes</tns:state>
+  				</tns:object>
+  			</tns:point>
+  		</tns:precondition>
+  		<tns:precondition action="BookedStorageC_Reply">
+  			<tns:point>
+  				<tns:object o_name="Type">
+  					<tns:state>Normal</tns:state>
+  				</tns:object>
+  				<tns:object o_name="AvailC">
+  					<tns:state>Yes</tns:state>
+  				</tns:object>
+  			</tns:point>
+  		</tns:precondition>
+  		<tns:precondition action="BookedStorageB_Reply">
+  			<tns:point>
+  				<tns:object o_name="Type">
+  					<tns:state>Heavy</tns:state>
+  				</tns:object>
+  				<tns:object o_name="AvailB">
+  					<tns:state>Yes</tns:state>
+  				</tns:object>
+  			</tns:point>
+  		</tns:precondition>
+  		<tns:precondition action="BookedStorageE_Reply">
+  			<tns:point>
+  				<tns:object o_name="Type">
+  					<tns:state>Heavy</tns:state>
+  				</tns:object>
+  				<tns:object o_name="AvailE">
+  					<tns:state>Yes</tns:state>
+  				</tns:object>
+  			</tns:point>
+  		</tns:precondition>
+  		<tns:precondition action="BookedStorageD_Reply">
+  			<tns:point>
+  				<tns:object o_name="Type">
+  					<tns:state>Luxury</tns:state>
+  				</tns:object>
+  				<tns:object o_name="AvailD">
+  					<tns:state>Yes</tns:state>
+  				</tns:object>
+  			</tns:point>
+  		</tns:precondition>
+  	</tns:preconditions>
+  	
+  	
+  	
+  	<tns:effects>
+  		<tns:effect action="BookedStorageA_Reply">
+  			<tns:object o_name="Ticket">
+  				<tns:event>StorageA_Assigned</tns:event>
+  			</tns:object> 	
+  			<tns:object o_name="Info">
+  				<tns:event>Expired</tns:event>
+  			</tns:object> 		
+  		</tns:effect>
+  		<tns:effect action="BookedStorageA_Reply">
+  			<tns:object o_name="TicketA">
+  				<tns:event>Assigned</tns:event>
+  			</tns:object> 	
+  			<tns:object o_name="Info">
+  				<tns:event>Expired</tns:event>
+  			</tns:object> 	
+  		</tns:effect>
+  		<tns:effect action="BookedStorageB_Reply">
+  			<tns:object o_name="Ticket">
+  				<tns:event>StorageB_Assigned</tns:event>
+  			</tns:object> 
+  			<tns:object o_name="Info">
+  				<tns:event>Expired</tns:event>
+  			</tns:object> 		
+  		</tns:effect>
+  		<tns:effect action="BookedStorageB_Reply">
+  			<tns:object o_name="TicketB">
+  				<tns:event>Assigned</tns:event>
+  			</tns:object> 
+  			<tns:object o_name="Info">
+  				<tns:event>Expired</tns:event>
+  			</tns:object> 		
+  		</tns:effect>
+  		<tns:effect action="BookedStorageC_Reply">
+  			<tns:object o_name="Ticket">
+  				<tns:event>StorageC_Assigned</tns:event>
+  			</tns:object> 
+  			<tns:object o_name="Info">
+  				<tns:event>Expired</tns:event>
+  			</tns:object> 		
+  		</tns:effect>
+  		<tns:effect action="BookedStorageC_Reply">
+  			<tns:object o_name="TicketC">
+  				<tns:event>Assigned</tns:event>
+  			</tns:object> 
+  			<tns:object o_name="Info">
+  				<tns:event>Expired</tns:event>
+  			</tns:object> 		
+  		</tns:effect>
+  		<tns:effect action="BookedStorageD_Reply">
+  			<tns:object o_name="Ticket">
+  				<tns:event>StorageD_Assigned</tns:event>
+  			</tns:object> 
+  			<tns:object o_name="Info">
+  				<tns:event>Expired</tns:event>
+  			</tns:object> 		
+  		</tns:effect>
+  		<tns:effect action="BookedStorageD_Reply">
+  			<tns:object o_name="TicketD">
+  				<tns:event>Assigned</tns:event>
+  			</tns:object> 
+  			<tns:object o_name="Info">
+  				<tns:event>Expired</tns:event>
+  			</tns:object> 		
+  		</tns:effect>
+  		<tns:effect action="BookedStorageE_Reply">
+  			<tns:object o_name="Ticket">
+  				<tns:event>StorageE_Assigned</tns:event>
+  			</tns:object> 
+  			<tns:object o_name="Info">
+  				<tns:event>Expired</tns:event>
+  			</tns:object> 		
+  		</tns:effect>
+  		<tns:effect action="BookedStorageE_Reply">
+  			<tns:object o_name="TicketE">
+  				<tns:event>Assigned</tns:event>
+  			</tns:object> 
+  			<tns:object o_name="Info">
+  				<tns:event>Expired</tns:event>
+  			</tns:object> 		
+  		</tns:effect>
+  	</tns:effects>
+  	
+  	<tns:compensations>
+  		<tns:compensation action="BookedStorageA_Reply">
+  			<tns:point>
+  				<tns:object o_name="TicketA">
+  					<tns:state>No</tns:state>
+  				</tns:object>
+  			</tns:point>
+  		</tns:compensation>
+  		
+  		<tns:compensation action="BookedStorageB_Reply">
+  			<tns:point>
+  				<tns:object o_name="TicketB">
+  					<tns:state>No</tns:state>
+  				</tns:object>
+  			</tns:point>
+  		</tns:compensation>
+  		
+  		<tns:compensation action="BookedStorageC_Reply">
+  			<tns:point>
+  				<tns:object o_name="TicketC">
+  					<tns:state>No</tns:state>
+  				</tns:object>
+  			</tns:point>
+  		</tns:compensation>
+  		
+  		<tns:compensation action="BookedStorageD_Reply">
+  			<tns:point>
+  				<tns:object o_name="TicketD">
+  					<tns:state>No</tns:state>
+  				</tns:object>
+  			</tns:point>
+  		</tns:compensation>
+  		
+  		<tns:compensation action="BookedStorageE_Reply">
+  			<tns:point>
+  				<tns:object o_name="TicketE">
+  					<tns:state>No</tns:state>
+  				</tns:object>
+  			</tns:point>
+  		</tns:compensation>
+  	</tns:compensations>
+  	
+  
+  </tns:annotation>
+</tns:service>

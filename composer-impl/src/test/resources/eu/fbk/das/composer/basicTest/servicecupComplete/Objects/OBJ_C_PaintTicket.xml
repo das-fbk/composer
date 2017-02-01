@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:object id="C_PaintTicket" xmlns:tns="http://soa.fbk.eu/Object" xmlns:tns1="http://www.astroproject.org/wstoolset/Choreography" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://soa.fbk.eu/Object ../../schemata/Object.xsd ">
+  <tns:states>
+    <tns:state>No</tns:state>
+    <tns:state>Yes</tns:state>
+  </tns:states>
+  
+  <tns:events>
+  	<tns:event>Treatment_Booked</tns:event>
+  	<tns:event>Dropped</tns:event>
+  </tns:events>
+  
+  <tns:transitions>
+  	
+  	<tns:transition isControllable="true">
+  		<tns:from>No</tns:from>
+  		<tns:to>Yes</tns:to>
+  		<tns:event>Treatment_Booked</tns:event>
+  	</tns:transition>
+  	<tns:transition isControllable="true">
+  		<tns:from>Yes</tns:from>
+  		<tns:to>No</tns:to>
+  		<tns:event>Dropped</tns:event>
+  	</tns:transition>
+  </tns:transitions>
+  
+  
+</tns:object>

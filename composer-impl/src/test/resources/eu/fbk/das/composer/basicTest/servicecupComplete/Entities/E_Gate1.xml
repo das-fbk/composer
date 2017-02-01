@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity name="gate1" xmlns="http://soa.fbk.eu/Entity">
+	<objects>
+		<object type="G1_Status" name="G1_Status" />
+	</objects>
+	<services>
+		<Service type="G1_LandingGuidance" />
+		<Service type="G1_Prepare4DepLarge" />
+		<Service type="G1_Prepare4DepSmall" />
+		<Service type="G1_Prepare4Large" />
+		<Service type="G1_Prepare4Small" />						
+	</services>
+	<processes>
+		<process type="Gate1"/>
+	</processes>
+</entity>

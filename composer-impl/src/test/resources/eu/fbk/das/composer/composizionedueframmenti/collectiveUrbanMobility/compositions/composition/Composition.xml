@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:composition name="Problemacomposizione2" xmlns:tns="http://das.fbk.eu/Composition"
+	xmlns:tns1="http://das.fbk.eu/Annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<tns:domainProperties>
+		<tns:domainProperty oid="TripOrganizer" type="TripOrganizer" />
+		<tns:domainProperty oid="FlexibusTrip" type="FlexibusTrip" />
+	</tns:domainProperties>
+	<tns:fragments>
+		<tns:fragment sid="TO_organizeTrip" type="TO_organizeTrip">
+			<tns:assignment o_name="TripOrganizer" oid="TripOrganizer" />
+			<tns:assignment o_name="FlexibusTrip" oid="FlexibusTrip" />
+		</tns:fragment>
+		<tns:fragment sid="FC_userRegistration" type="FC_userRegistration">
+			<tns:assignment o_name="FlexibusTrip" oid="FlexibusTrip" />
+		</tns:fragment>
+		<tns:fragment sid="FC_flexibusBooking" type="FC_flexibusBooking">
+			<tns:assignment o_name="FlexibusTrip" oid="FlexibusTrip" />
+		</tns:fragment>
+	</tns:fragments>
+	<tns:synchronization>
+		<tns:point priority="0">
+			<tns:domainProperty oid="TripOrganizer">
+				<tns:state>ORGANIZED</tns:state>
+			</tns:domainProperty>
+		</tns:point>
+	<!-- 
+		<tns:point>
+			<tns:domainProperty oid="FlexibusTrip">
+				<tns:state>TRIP_BOOKED</tns:state>
+			</tns:domainProperty>
+		</tns:point>
+		 -->
+	</tns:synchronization>
+	<tns:runtime>
+		<tns:domainProperties>
+			<tns:domainProperty oid="TripOrganizer">RINIT</tns:domainProperty>
+			<tns:domainProperty oid="FlexibusTrip">RINIT</tns:domainProperty>
+		</tns:domainProperties>
+		<tns:fragments>
+			<tns:fragment sid="TO_organizeTrip">ST0</tns:fragment>
+			<tns:fragment sid="FC_userRegistration">ST0</tns:fragment>
+			<tns:fragment sid="FC_flexibusBooking">ST0</tns:fragment>
+		</tns:fragments>
+	</tns:runtime>
+</tns:composition>

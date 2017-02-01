@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:object id="G1_Status" xmlns:tns="http://soa.fbk.eu/Object" xmlns:tns1="http://www.astroproject.org/wstoolset/Choreography" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://soa.fbk.eu/Object ../../schemata/Object.xsd ">
+  <tns:states>
+    <tns:state>Free</tns:state>
+    <tns:state>Landing</tns:state>
+    <tns:state>Occupied</tns:state>
+    <tns:state>Departing</tns:state>
+  </tns:states>
+   
+   
+   <tns:events>
+   		<tns:event>ToLanding</tns:event>
+   		<tns:event>ToDeparting</tns:event>
+   </tns:events>
+   
+   <tns:transitions>
+   		<tns:transition isControllable="true">
+   			<tns:from>Free</tns:from>
+   			<tns:to>Landing</tns:to>
+   			<tns:event>ToLanding</tns:event>
+   		</tns:transition>
+   		<tns:transition isControllable="true">
+   			<tns:from>Occupied</tns:from>
+   			<tns:to>Departing</tns:to>
+   			<tns:event>ToDeparting</tns:event>
+   		</tns:transition>
+   </tns:transitions>
+</tns:object>
