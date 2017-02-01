@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<entity name="DeliveryManager" xmlns="http://soa.fbk.eu/Entity">
-	<services>
-		<Service type="DM_BookDelivery"></Service>
-	</services>
-	<processes>
-		<process type="DeliveryManager"></process>
-	</processes>
-</entity>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<entity name="StorageManager" xmlns="http://soa.fbk.eu/Entity">
-	<services>
-		<Service type="SM_GetStorageInfo" />
-	</services>
-	<processes>
-		<process type="StorageManager"/>
-	</processes>
-</entity>

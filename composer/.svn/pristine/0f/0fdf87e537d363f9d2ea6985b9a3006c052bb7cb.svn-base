@@ -1,6 +1,0 @@
-Questo esempio, vedi file della composizione, e' un esempio di come il composer riesce a risolvere
-un problema di composizione a due passi, ovvero:
-
-* data una domain property con stato iniziale A e stati B e C con transazioni A->B, B->C
-* dato come goal del processo dell'utente per l'attivita' astratta di far arrivare la domain property
-  allo stato C

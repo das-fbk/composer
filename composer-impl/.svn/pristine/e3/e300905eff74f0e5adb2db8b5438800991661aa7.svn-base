@@ -1,2 +1,0 @@
-"C:\Lavoro\workspace\soa\composer\composer-impl\src\test\resources\eu\fbk\das\composer\alberto\wsynth.exe" -model_type dn -out_type dot -algo agaf_then_acyclic_preferences -agaf states -mono -dynamic -reachability_analysis "C:\Lavoro\workspace\soa\composer\src\test\resources\eu\fbk\das\composer\alberto\\collectiveUrbanMobility\Compositions\Composition\Composition.smv" >"C:\Lavoro\workspace\soa\composer\src\test\resources\eu\fbk\das\composer\alberto\collectiveUrbanMobility\Compositions\Composition\Composition.dot"
-pause
